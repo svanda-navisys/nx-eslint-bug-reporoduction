@@ -24,6 +24,12 @@
     },
     "my-second-app": {
       "tags": []
+    },
+    "my-app-my-lib": {
+      "tags": []
+    },
+    "my-app-my-second-lib": {
+      "tags": []
     }
   }
 }

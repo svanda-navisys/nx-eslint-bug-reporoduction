@@ -120,6 +120,56 @@
           }
         }
       }
+    },
+    "my-app-my-lib": {
+      "root": "libs/my-app/my-lib",
+      "sourceRoot": "libs/my-app/my-lib/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/my-app/my-lib/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/my-app/my-lib"
+          ],
+          "options": {
+            "jestConfig": "libs/my-app/my-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "my-app-my-second-lib": {
+      "root": "libs/my-app/my-second-lib",
+      "sourceRoot": "libs/my-app/my-second-lib/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/my-app/my-second-lib/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/my-app/my-second-lib"
+          ],
+          "options": {
+            "jestConfig": "libs/my-app/my-second-lib/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }
