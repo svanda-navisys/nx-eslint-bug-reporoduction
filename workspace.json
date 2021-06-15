@@ -12,12 +12,16 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/my-app",
             "main": "apps/my-app/src/main.ts",
             "tsConfig": "apps/my-app/tsconfig.app.json",
-            "assets": ["apps/my-app/src/assets"]
+            "assets": [
+              "apps/my-app/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -42,14 +46,76 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/my-app/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/my-app/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/my-app"],
+          "outputs": [
+            "coverage/apps/my-app"
+          ],
           "options": {
             "jestConfig": "apps/my-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "my-second-app": {
+      "root": "apps/my-second-app",
+      "sourceRoot": "apps/my-second-app/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/my-second-app",
+            "main": "apps/my-second-app/src/main.ts",
+            "tsConfig": "apps/my-second-app/tsconfig.app.json",
+            "assets": [
+              "apps/my-second-app/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/my-second-app/src/environments/environment.ts",
+                  "with": "apps/my-second-app/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "my-second-app:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/my-second-app/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/my-second-app"
+          ],
+          "options": {
+            "jestConfig": "apps/my-second-app/jest.config.js",
             "passWithNoTests": true
           }
         }

@@ -21,6 +21,9 @@
   "projects": {
     "my-app": {
       "tags": []
+    },
+    "my-second-app": {
+      "tags": []
     }
   }
 }
